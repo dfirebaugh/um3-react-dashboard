@@ -39,13 +39,13 @@ class PrinterInfo extends Component {
 
         that.setState({bedTemp:data.bed.temperature.current}) ;
         that.setState({hotEndTemp:data.heads[0].extruders[0].hotend.temperature.current}) ;
-        that.setState({filamentA:data.heads[0].extruders[0].active_material.length_remaining}) ;
+        that.setState({filamentA:Math.round(data.heads[0].extruders[0].active_material.length_remaining)}) ;
 
         if(data.heads[0].extruders[1].active_material.length_remaining === -1){
           that.setState({filamentB:'Not Loaded'}) ;
         }
         else{
-          that.setState({filamentB:data.heads[0].extruders[1].active_material.length_remaining}) ;
+          that.setState({filamentB:Math.round(data.heads[0].extruders[1].active_material.length_remaining)}) ;
           }
       })
       .catch(function(error) {
